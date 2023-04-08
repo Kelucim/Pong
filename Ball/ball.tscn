@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbxs4ioq4edfh"]
+
+[ext_resource type="Texture2D" uid="uid://c6wo3p3jka5qi" path="res://Ball/PongBall.png" id="1_phwyv"]
+[ext_resource type="Script" path="res://Ball/ball.gd" id="1_rb6qf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4qu5"]
+size = Vector2(16, 16)
+
+[node name="Ball" type="CharacterBody2D"]
+floor_max_angle = 0.0
+script = ExtResource("1_rb6qf")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s4qu5")
+
+[node name="PongBall" type="Sprite2D" parent="."]
+texture = ExtResource("1_phwyv")
+
+[node name="Speeder" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_s4qu5")
+
+[node name="Area2DGoal" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DGoal"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_s4qu5")
+
+[node name="Area2DTop" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DTop"]
+visible = false
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_s4qu5")
+
+[node name="Area2DBottom" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DBottom"]
+visible = false
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_s4qu5")
+
+[node name="Area2DMiddle" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DMiddle"]
+visible = false
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_s4qu5")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2DTop" to="." method="_on_area_2d_top_area_entered"]
+[connection signal="area_entered" from="Area2DBottom" to="." method="_on_area_2d_bottom_area_entered"]
+[connection signal="area_entered" from="Area2DMiddle" to="." method="_on_area_2d_middle_area_entered"]

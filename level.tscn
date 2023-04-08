@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cb341mt1k58k4"]
+
+[ext_resource type="Script" path="res://level.gd" id="1_86qlb"]
+[ext_resource type="PackedScene" uid="uid://dpj2m1w7pcij5" path="res://iu.tscn" id="1_hodwo"]
+[ext_resource type="PackedScene" uid="uid://b6l3d44e3msr6" path="res://Player/player.tscn" id="1_py44t"]
+[ext_resource type="PackedScene" uid="uid://dbxs4ioq4edfh" path="res://Ball/ball.tscn" id="2_8d57y"]
+[ext_resource type="Texture2D" uid="uid://cf3xmmxrfh2o7" path="res://PongBackground.png" id="2_gib3k"]
+[ext_resource type="PackedScene" uid="uid://b50r7y7jcnac0" path="res://goal_post.tscn" id="5_r4k0j"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_86qlb")
+
+[node name="PongBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(576, 324)
+scale = Vector2(7.2, 7.2)
+texture = ExtResource("2_gib3k")
+
+[node name="IU" parent="." instance=ExtResource("1_hodwo")]
+
+[node name="Player" parent="." instance=ExtResource("1_py44t")]
+
+[node name="Player2" parent="." instance=ExtResource("1_py44t")]
+player = 1
+
+[node name="Ball" parent="." instance=ExtResource("2_8d57y")]
+
+[node name="GoalPost" parent="." instance=ExtResource("5_r4k0j")]
+position = Vector2(-32, 320)
+
+[node name="GoalPost2" parent="." instance=ExtResource("5_r4k0j")]
+position = Vector2(1184, 320)
+psPost = 1
+
+[connection signal="start" from="IU" to="." method="_on_iu_start"]

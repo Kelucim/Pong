@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6l3d44e3msr6"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_bybf4"]
+[ext_resource type="Texture2D" uid="uid://cyic41dedvwar" path="res://Player/PongPaddle.png" id="2_qfl0e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s0x3x"]
+size = Vector2(16, 96)
+
+[node name="Player" type="CharacterBody2D" groups=["Players"]]
+script = ExtResource("1_bybf4")
+
+[node name="PongPaddle" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1, 1.5)
+texture = ExtResource("2_qfl0e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -1.43051e-06)
+shape = SubResource("RectangleShape2D_s0x3x")
+
+[node name="HitboxX" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxX"]
+visible = false
+shape = SubResource("RectangleShape2D_s0x3x")
+
+[node name="HitboxBottom" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxBottom"]
+position = Vector2(0, 46)
+scale = Vector2(1, 0.045)
+shape = SubResource("RectangleShape2D_s0x3x")
+
+[node name="HitboxTop" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxTop"]
+position = Vector2(0, -46)
+scale = Vector2(1, 0.045)
+shape = SubResource("RectangleShape2D_s0x3x")
+
+[node name="HitboxYMiddle" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxYMiddle"]
+scale = Vector2(1, 0.91)
+shape = SubResource("RectangleShape2D_s0x3x")

@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpj2m1w7pcij5"]
+
+[ext_resource type="Script" path="res://iu.gd" id="1_jlddy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7mot"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1heom"]
+bg_color = Color(0.117647, 0.117647, 0.117647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxo5t"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[node name="IU" type="CanvasLayer"]
+script = ExtResource("1_jlddy")
+
+[node name="PlayerOneScoreLabel" type="Label" parent="."]
+visible = false
+offset_right = 512.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PlayerTwoScoreLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -512.0
+offset_bottom = 91.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "0"
+vertical_alignment = 1
+
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 92.0
+offset_right = 192.0
+offset_bottom = 209.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 72
+text = "Pong!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.444
+anchor_right = 0.576
+anchor_bottom = 0.556
+offset_left = -0.448029
+offset_top = 0.287964
+offset_right = 0.447937
+offset_bottom = -0.288025
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_q7mot")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1heom")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yxo5t")
+text = "Start"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

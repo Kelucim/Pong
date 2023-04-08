@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b50r7y7jcnac0"]
+
+[ext_resource type="Script" path="res://goal_post.gd" id="1_j5wse"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u4qa3"]
+size = Vector2(32, 1112)
+
+[node name="GoalPost" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_j5wse")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_u4qa3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
