@@ -30,7 +30,7 @@ func _ready():
 	hide()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if whichDir.gameStarted:
 		move_and_collide(Vector2(1 * dirX * speedX, dirY * speedY))
 	
