@@ -9,7 +9,7 @@ func _ready():
 	level = get_parent()
 
 func _on_area_entered(_area):
-	if globalVariable.playerTwoScore < 4 || globalVariable.playerOneScore < 4:
+	if globalVariable.playerTwoScore < 4 && psPost == 0 || globalVariable.playerOneScore < 4 && psPost == 1:
 		if psPost == 0:
 			globalVariable.playerTwoScore += 1
 		else:
